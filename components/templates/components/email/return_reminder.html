@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .details {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>{% if is_overdue %}OVERDUE{% else %}Return Reminder{% endif %}</h2>
+        </div>
+
+        {% if is_overdue %}
+        <div class="alert alert-danger">
+            <strong>This component is overdue for return!</strong>
+        </div>
+        {% else %}
+        <div class="alert alert-warning">
+            <strong>Reminder:</strong> This component is due for return in {{ days_remaining }} days.
+        </div>
+        {% endif %}
+
+        <div class="details">
+            <h3>Component Details:</h3>
+            <p><strong>Name:</strong> {{ component.name }}</p>
+            <p><strong>Quantity:</strong> {{ quantity }}</p>
+            <p><strong>Expected Return Date:</strong> {{ expected_return_date|date:"F j, Y" }}</p>
+            {% if component.serial_number %}
+            <p><strong>Serial Number:</strong> {{ component.serial_number }}</p>
+            {% endif %}
+        </div>
+
+        <p>Dear {{ user_name }},</p>
+
+        <p>This is a reminder that the above component{% if quantity > 1 %}s{% endif %} {% if is_overdue %}was due{% else %}is due{% endif %} for return on {{ expected_return_date|date:"F j, Y" }}.</p>
+
+        <p>Please return the component{% if quantity > 1 %}s{% endif %} to the IoT Lab as soon as possible.</p>
+
+        <div class="footer">
+            <p>This is an automated reminder from the IoT Lab Management System.</p>
+        </div>
+    </div>
+</body>
+</html> 

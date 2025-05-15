@@ -1,0 +1,8 @@
+Django
+django-crispy-forms
+crispy-bootstrap5
+gunicorn
+whitenoise
+Pillow
+django-filter
+schedule
