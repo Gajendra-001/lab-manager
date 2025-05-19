@@ -158,8 +158,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'dhaked.7248@gmail.com'
 # Replace this with your App Password from Google Account
-EMAIL_HOST_PASSWORD = 'gwsh aptv wmyh gyow'
-DEFAULT_FROM_EMAIL = 'dhaked.7248@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = ''
 
 # SSL Certificate settings
 ssl._create_default_https_context = ssl._create_unverified_context
